@@ -1,46 +1,125 @@
-# DBMS Laboratory Manual Submission
+# Experiment 1: Entity-Relationship (ER) Diagram
 
-## 🎓 Course: 19CS404 Database Management System and its Applications  
-## 🧑‍🏫 Instructor: Ms. G Abinaya 
+## 🎯 Objective:
+To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
-![image](https://github.com/user-attachments/assets/7e6f9751-b530-4526-9a3d-8e322e3b2e6d)
+## 📚 Purpose:
+The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
 
-### 📝 Instructions for Students
+---
 
-1. Fork this repository to your GitHub profile.
-2. For each experiment:
-   SQL queries based on questions generated randomly from Moodle.
-   - Complete the question on Moodle.
-   - Each experiment folder contains **two Markdown files**
-     1. `README.md`
 
-        This file contains:
-         - 🎯 **Aim**
-         - 📚 **Theory**
-         - 📝 **Result**
-        
-        You **do not need to edit** this file unless instructed.
-      3. `output.md`
 
-         You **must update this file** with your answers and outputs.
-         For each of the 10 Moodle-generated questions:
-         - Paste the **question**
-         - Write the **SQL query** inside the code block
-         - Paste a **screenshot or terminal output** below it
-3. Commit and push your changes.
-4. Create a pull request to the original repository
+### 🔹 Scenario 1: University Database
+Design a database to manage students, instructors, programs, courses, and student enrollments. Include prerequisites for courses.
 
-### ✅ Experiments List
+**User Requirements:**
+- Academic programs grouped under departments.
+- Students have admission number, name, DOB, contact info.
+- Instructors with staff number, contact info, etc.
+- Courses have number, name, credits.
+- Track course enrollments by students and enrollment date.
+- Add support for prerequisites (some courses require others).
 
-| Exp No | Title                          | Module Based? |
-|--------|--------------------------------|---------------|
-| 1      | ER Diagram                     | No            |
-| 2      | DDL Commands                   | Yes           |
-| 3      | DML Commands                   | Yes           |
-| 4      | Aggregate, GROUP BY, HAVING   | Yes           |
-| 5      | Subqueries and Views          | Yes           |
-| 6      | Joins                         | Yes           |
-| 7      | Pl/sql                        | No            |
-| 8      | Procedures, Functions         | No            |
-| 9      | Cursors, Exception Handling   | No            |
-| 10     | Triggers                      | No            |
+---
+
+
+
+---
+
+## 📝 Tasks:
+1. Identify entities, relationships, and attributes.
+2. Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
+3. Include:
+   - Cardinality & participation constraints
+   - Prerequisites for University OR Billing for Hospital
+4. Explain:
+   - Why you chose the entities and relationships.
+   - How you modeled prerequisites or billing.
+
+
+## Scenario Chosen:
+University
+
+## ER Diagram:
+![Screenshot 2025-04-30 202032](https://github.com/user-attachments/assets/1bca0c53-c744-4359-b232-2387573ad1f9)
+
+
+## Entities and Attributes:
+Student
+
+Attributes: StudentID (Primary Key), FullName, DateOfBirth
+
+Department
+
+Attributes: DepartmentID (Primary Key), Name, CourseName (Note: CourseName seems misplaced here — likely a separate entity is needed for Course)
+
+Program
+
+Attributes: ProgramID (Primary Key), Program Name, DepartmentID (Foreign Key)
+
+Teaches (Modeled as an entity but may be better as a relationship)
+
+Attributes: InstructorID, CourseID, staff number
+...
+
+## Relationships and Constraints:
+University
+
+Entities involved: Student, Department, Program
+
+Cardinality:
+
+A Student belongs to one Department
+
+A Program is part of one Department
+
+A Department can have many Students and Programs
+
+Participation:
+
+Total for Students (every student must be in a department)
+
+Partial for Departments (not every department needs students/programs, possibly)
+
+Teaches
+
+Entities involved: Possibly Instructor, Course
+
+Cardinality: Many-to-Many (an Instructor can teach many courses, and a course can be taught by many instructors)
+
+Participation: Partial for both
+
+Note: The diagram lacks clear entities for Instructor and Course — could be modeled explicitly
+...
+
+## Extension (Prerequisite / Billing):
+Prerequisite:
+
+Could be modeled as a recursive relationship on the Course entity (e.g., Course A requires Course B)
+
+Attributes: CourseID, PrerequisiteCourseID
+
+Billing:
+
+Not modeled in this ER diagram
+
+Could be introduced with a new Billing entity connected to Student
+
+Attributes: BillID, StudentID, Amount, DueDate
+
+## Design Choices:
+Entity Identification: Focused on key academic entities: Student, Department, Program. These are commonly needed in a university database.
+
+Attributes: Captured essential properties only (like ID, name, etc.), assuming additional attributes could be added as needed.
+
+Teaches: Although modeled as an entity, it could be better modeled as a relationship between Instructor and Course.
+
+Simplification Assumptions:
+
+No separate Instructor or Course entity was modeled despite relevant attributes (likely for simplicity)
+
+The University relationship groups multiple entities, which might be more useful broken into simpler, binary relationships for clarity.
+
+## RESULT
+Thus, the Entity-Relationship (ER) Diagram have been created successfully.
