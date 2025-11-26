@@ -1,143 +1,125 @@
-# ER Diagram Workshop – Submission Template
+# Experiment 1: Entity-Relationship (ER) Diagram
 
-## Objective
-To understand and apply ER modeling concepts by creating ER diagrams for real-world applications.
+## 🎯 Objective:
+To understand and apply the concepts of ER modeling by creating an ER diagram for a real-world application.
 
-## Purpose
-Gain hands-on experience in designing ER diagrams that represent database structure including entities, relationships, attributes, and constraints.
-
----
-
-# Scenario A: City Fitness Club Management
-
-**Business Context:**  
-FlexiFit Gym wants a database to manage its members, trainers, and fitness programs.
-
-**Requirements:**  
-- Members register with name, membership type, and start date.  
-- Each member can join multiple programs (Yoga, Zumba, Weight Training).  
-- Trainers assigned to programs; a program may have multiple trainers.  
-- Members may book personal training sessions with trainers.  
-- Attendance recorded for each session.  
-- Payments tracked for memberships and sessions.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
+## 📚 Purpose:
+The purpose of this workshop is to gain hands-on experience in designing ER diagrams that visually represent the structure of a database including entities, relationships, attributes, and constraints.
 
 ---
 
-# Scenario B: City Library Event & Book Lending System
 
-**Business Context:**  
-The Central Library wants to manage book lending and cultural events.
 
-**Requirements:**  
-- Members borrow books, with loan and return dates tracked.  
-- Each book has title, author, and category.  
-- Library organizes events; members can register.  
-- Each event has one or more speakers/authors.  
-- Rooms are booked for events and study.  
-- Overdue fines apply for late returns.
+### 🔹 Scenario 1: University Database
+Design a database to manage students, instructors, programs, courses, and student enrollments. Include prerequisites for courses.
 
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_library.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
+**User Requirements:**
+- Academic programs grouped under departments.
+- Students have admission number, name, DOB, contact info.
+- Instructors with staff number, contact info, etc.
+- Courses have number, name, credits.
+- Track course enrollments by students and enrollment date.
+- Add support for prerequisites (some courses require others).
 
 ---
 
-# Scenario C: Restaurant Table Reservation & Ordering
 
-**Business Context:**  
-A popular restaurant wants to manage reservations, orders, and billing.
-
-**Requirements:**  
-- Customers can reserve tables or walk in.  
-- Each reservation includes date, time, and number of guests.  
-- Customers place food orders linked to reservations.  
-- Each order contains multiple dishes; dishes belong to categories (starter, main, dessert).  
-- Bills generated per reservation, including food and service charges.  
-- Waiters assigned to serve reservations.
-
-### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
-
-### Entities and Attributes
-
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-
-### Relationships and Constraints
-
-| Relationship | Cardinality | Participation | Notes |
-|--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
-
-### Assumptions
-- 
-- 
-- 
 
 ---
 
-## Instructions for Students
+## 📝 Tasks:
+1. Identify entities, relationships, and attributes.
+2. Draw the ER diagram using any tool (draw.io, dbdiagram.io, hand-drawn and scanned).
+3. Include:
+   - Cardinality & participation constraints
+   - Prerequisites for University OR Billing for Hospital
+4. Explain:
+   - Why you chose the entities and relationships.
+   - How you modeled prerequisites or billing.
 
-1. Complete **all three scenarios** (A, B, C).  
-2. Identify entities, relationships, and attributes for each.  
-3. Draw ER diagrams using **draw.io / diagrams.net** or hand-drawn & scanned.  
-4. Fill in all tables and assumptions for each scenario.  
-5. Export the completed Markdown (with diagrams) as **a single PDF**
+
+## Scenario Chosen:
+University
+
+## ER Diagram:
+![Screenshot 2025-04-30 202032](https://github.com/user-attachments/assets/1bca0c53-c744-4359-b232-2387573ad1f9)
+
+
+## Entities and Attributes:
+Student
+
+Attributes: StudentID (Primary Key), FullName, DateOfBirth
+
+Department
+
+Attributes: DepartmentID (Primary Key), Name, CourseName (Note: CourseName seems misplaced here — likely a separate entity is needed for Course)
+
+Program
+
+Attributes: ProgramID (Primary Key), Program Name, DepartmentID (Foreign Key)
+
+Teaches (Modeled as an entity but may be better as a relationship)
+
+Attributes: InstructorID, CourseID, staff number
+...
+
+## Relationships and Constraints:
+University
+
+Entities involved: Student, Department, Program
+
+Cardinality:
+
+A Student belongs to one Department
+
+A Program is part of one Department
+
+A Department can have many Students and Programs
+
+Participation:
+
+Total for Students (every student must be in a department)
+
+Partial for Departments (not every department needs students/programs, possibly)
+
+Teaches
+
+Entities involved: Possibly Instructor, Course
+
+Cardinality: Many-to-Many (an Instructor can teach many courses, and a course can be taught by many instructors)
+
+Participation: Partial for both
+
+Note: The diagram lacks clear entities for Instructor and Course — could be modeled explicitly
+...
+
+## Extension (Prerequisite / Billing):
+Prerequisite:
+
+Could be modeled as a recursive relationship on the Course entity (e.g., Course A requires Course B)
+
+Attributes: CourseID, PrerequisiteCourseID
+
+Billing:
+
+Not modeled in this ER diagram
+
+Could be introduced with a new Billing entity connected to Student
+
+Attributes: BillID, StudentID, Amount, DueDate
+
+## Design Choices:
+Entity Identification: Focused on key academic entities: Student, Department, Program. These are commonly needed in a university database.
+
+Attributes: Captured essential properties only (like ID, name, etc.), assuming additional attributes could be added as needed.
+
+Teaches: Although modeled as an entity, it could be better modeled as a relationship between Instructor and Course.
+
+Simplification Assumptions:
+
+No separate Instructor or Course entity was modeled despite relevant attributes (likely for simplicity)
+
+The University relationship groups multiple entities, which might be more useful broken into simpler, binary relationships for clarity.
+
+## RESULT
+Thus, the Entity-Relationship (ER) Diagram have been created successfully.
